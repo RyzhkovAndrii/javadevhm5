@@ -1,5 +1,18 @@
 USE `javadevhm5`;
 
+INSERT INTO `roles` (id, name) VALUES
+  (0xe6b2df9495074e7097eea54583962aa6, 'ROLE_ADMIN'),
+  (0xd0599670b4e94edf9c25cbd9a271f17e, 'ROLE_USER');
+
+INSERT INTO `users` (id, email, password, first_name, last_name) VALUES
+  (0x02deb31e9d5147e5b8d284559326a3f2, 'admin@email.com', 'admin', 'adminName', 'adminLastName'),
+  (0xd2129e2edfe449bc85dd3864282aafac, 'user@email.com', 'user', 'userName', 'userLastName');
+
+INSERT INTO users_roles (user_id, role_id) VALUES
+  (0x02deb31e9d5147e5b8d284559326a3f2, 0xe6b2df9495074e7097eea54583962aa6),
+  (0x02deb31e9d5147e5b8d284559326a3f2, 0xd0599670b4e94edf9c25cbd9a271f17e),
+  (0xd2129e2edfe449bc85dd3864282aafac, 0xd0599670b4e94edf9c25cbd9a271f17e);
+
 INSERT INTO `manufacturers` (id, name) VALUES
   (0xC992D51C15F84A379119CAFEF19E4D66, 'Apple'),
   (0xE71AA8612E324CDE9DE4388B8C7456F8, 'LG'),
