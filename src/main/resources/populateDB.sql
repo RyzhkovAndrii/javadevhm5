@@ -8,7 +8,7 @@ INSERT INTO `users` (id, email, password, first_name, last_name) VALUES
   (0x02deb31e9d5147e5b8d284559326a3f2, 'admin@email.com', 'admin', 'adminName', 'adminLastName'),
   (0xd2129e2edfe449bc85dd3864282aafac, 'user@email.com', 'user', 'userName', 'userLastName');
 
-INSERT INTO users_roles (user_id, role_id) VALUES
+INSERT INTO `users_roles` (user_id, role_id) VALUES
   (0x02deb31e9d5147e5b8d284559326a3f2, 0xe6b2df9495074e7097eea54583962aa6),
   (0x02deb31e9d5147e5b8d284559326a3f2, 0xd0599670b4e94edf9c25cbd9a271f17e),
   (0xd2129e2edfe449bc85dd3864282aafac, 0xd0599670b4e94edf9c25cbd9a271f17e);
