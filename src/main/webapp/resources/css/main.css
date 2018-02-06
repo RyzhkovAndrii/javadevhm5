@@ -1,0 +1,12 @@
+body {
+    font: 14px/21px "Lucida Sans", "Lucida Grande", "Lucida Sans Unicode", sans-serif;
+}
+
+.main_css h3, .main_css label, .main_css td, .main_css th {
+    font-family: Georgia, Times, "Times New Roman", serif;
+}
+
+.main_css h3 {
+    margin: 0;
+    display: inline;
+}

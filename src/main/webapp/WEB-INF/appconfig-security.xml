@@ -1,0 +1,55 @@
+<beans:beans xmlns="http://www.springframework.org/schema/security"
+             xmlns:beans="http://www.springframework.org/schema/beans"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-4.2.xsd
+	http://www.springframework.org/schema/security
+	http://www.springframework.org/schema/security/spring-security-4.2.xsd">
+
+    <http use-expressions="true">
+        <!--User-->
+        <intercept-url pattern="/users" access="hasAnyRole('ROLE_ADMIN', 'ROLE_USER')"/>
+        <intercept-url pattern="/users/" access="hasAnyRole('ROLE_ADMIN', 'ROLE_USER')"/>
+        <intercept-url pattern="/users/{id}" access="hasAnyRole('ROLE_ADMIN', 'ROLE_USER')"/>
+        <intercept-url pattern="/users/{id}/" access="hasAnyRole('ROLE_ADMIN', 'ROLE_USER')"/>
+        <intercept-url pattern="/users/remove/*" access="hasRole('ROLE_ADMIN')"/>
+        <intercept-url pattern="/users/update/*" access="hasRole('ROLE_ADMIN')"/>
+        <!--Role-->
+        <intercept-url pattern="/roles/**" access="hasRole('ROLE_ADMIN')"/>
+        <!--Manufacturer-->
+        <intercept-url pattern="/manufacturers" access="hasAnyRole('ROLE_ADMIN', 'ROLE_USER')"/>
+        <intercept-url pattern="/manufacturers/" access="hasAnyRole('ROLE_ADMIN', 'ROLE_USER')"/>
+        <intercept-url pattern="/manufacturers/{id}" access="hasAnyRole('ROLE_ADMIN', 'ROLE_USER')"/>
+        <intercept-url pattern="/manufacturers/{id}/" access="hasAnyRole('ROLE_ADMIN', 'ROLE_USER')"/>
+        <intercept-url pattern="/manufacturers/remove/*" access="hasRole('ROLE_ADMIN')"/>
+        <intercept-url pattern="/manufacturers/update/*" access="hasRole('ROLE_ADMIN')"/>
+        <!--Product-->
+        <intercept-url pattern="/products" access="hasAnyRole('ROLE_ADMIN', 'ROLE_USER')"/>
+        <intercept-url pattern="/products/" access="hasAnyRole('ROLE_ADMIN', 'ROLE_USER')"/>
+        <intercept-url pattern="/products/{id}" access="hasAnyRole('ROLE_ADMIN', 'ROLE_USER')"/>
+        <intercept-url pattern="/products/{id}/" access="hasAnyRole('ROLE_ADMIN', 'ROLE_USER')"/>
+        <intercept-url pattern="/products/remove/*" access="hasRole('ROLE_ADMIN')"/>
+        <intercept-url pattern="/products/update/*" access="hasRole('ROLE_ADMIN')"/>
+
+
+        <form-login
+                login-page="/login"
+                default-target-url="/home"
+                authentication-failure-url="/login?error"
+                username-parameter="loginUsername"
+                password-parameter="loginPassword"
+        />
+        <logout logout-url="/logout"
+                logout-success-url="/login?logout"
+        />
+    </http>
+
+    <authentication-manager alias="authenticationManager">
+        <authentication-provider user-service-ref="userDetailsServiceImpl">
+        </authentication-provider>
+    </authentication-manager>
+
+    <beans:bean id="userDetailsServiceImpl"
+                class="goit.gojava7.ryzhkov.security.UserDetailsServiceImpl"/>
+
+</beans:beans>
